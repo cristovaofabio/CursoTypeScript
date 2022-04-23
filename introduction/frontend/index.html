@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create new account</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
+
+    <div class="container">
+        <form action="" id="form" class="form">
+            <h2>Sign Up</h2>
+
+            <div class="form-fields">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="username" id="username">
+                <span class="error-message">Invalid field</span>
+            </div>
+
+            <div class="form-fields">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" class="email" id="email">
+                <span class="error-message">Invalid field</span>
+            </div>
+
+            <div class="form-fields">
+                <label for="username">Password</label>
+                <input type="password" name="password" class="password" id="password">
+                <span class="error-message">Invalid field</span>
+            </div>
+
+            <div class="form-fields">
+                <label for="username">Repeat password</label>
+                <input type="password" name="password2" class="password2" id="password2">
+                <span class="error-message">Invalid field</span>
+            </div>
+
+            <div class="form-fields">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
 
     <script src="assets/js/bundle.js"></script>
 </body>
+
 </html>
