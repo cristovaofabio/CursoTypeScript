@@ -1,2 +1,2 @@
 # Curso TypeScript 💻
-The introduction file contains a form validation system in TypeScript and HTML
+The test_webpack file contains a form validation system in TypeScript and HTML
