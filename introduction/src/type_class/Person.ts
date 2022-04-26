@@ -18,6 +18,10 @@ export class Person {
         return this._name.toUpperCase();
     }
 
+    static createPerson(name: string, last_name: string, age: number): Person {
+        return new Person(name, last_name, age, '000.000.000-00');
+    }
+
 }
 
 export class Student extends Person {
@@ -40,8 +44,10 @@ export class Teacher extends Person {
 
 const student = new Student('Mike', 'Tyson', 20, '000.000.000-00');
 const teacher = new Teacher('Travor', 'Brant', 50, '111.111.111-11', 'Geography')
+const person = Person.createPerson('Mary', 'McClain', 30);
 
 console.log(student.getMessage());
 console.log(teacher);
 student.cpf = '001.001.001-01';
 console.log(student.name);
+console.log(person);
