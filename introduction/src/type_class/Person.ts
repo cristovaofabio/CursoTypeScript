@@ -1,13 +1,21 @@
 export class Person {
     constructor(
-        public name: string,
-        public last_name: string,
+        private _name: string,
+        private last_name: string,
         private age: number,
-        protected cpf: string,
+        protected _cpf: string,
     ) { }
 
     getMessage(): string {
         return 'Hello, I am a person';
+    }
+
+    set cpf(value: string) {
+        this._cpf = value;
+    }
+
+    get name(): string {
+        return this._name.toUpperCase();
     }
 
 }
@@ -35,3 +43,5 @@ const teacher = new Teacher('Travor', 'Brant', 50, '111.111.111-11', 'Geography'
 
 console.log(student.getMessage());
 console.log(teacher);
+student.cpf = '001.001.001-01';
+console.log(student.name);
