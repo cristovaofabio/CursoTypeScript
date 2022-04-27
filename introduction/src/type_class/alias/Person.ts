@@ -1,10 +1,10 @@
-type TypePerson = {
+interface TypePerson {
     first_name: string,
     last_name: string,
     fullName(): string,
 }
 
-type TypeNationality = {
+interface TypeNationality {
     country: string,
     capital: string,
     fullInfoCountry(): string,
