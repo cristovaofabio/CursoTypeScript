@@ -28,29 +28,44 @@ console.log(new Api())
 
 //--------------------------------//
 
-@decorator
+interface Constructor {
+    new(...args: any[]): any;
+}
+
+function decorator(value1: string, value2: string) {
+    return function <T extends Constructor>(target: T): T {
+
+        return class extends target {
+            name: string;
+            age: number;
+
+            constructor(...args: any[]) {
+                super(...args);
+                this.name = this.phraseName(args[0]);
+                this.age = args[1];
+            }
+
+            phraseName(value: string): string {
+                return `${value.toUpperCase()} is ${value1} and ${value2}`;
+            }
+        };
+    }
+}
+
+function anotherDecorator() {
+    return function (target: Constructor) {
+        console.log('I am an another decorator');
+        return target;
+    };
+}
+
+@anotherDecorator()
+@decorator('smart', 'nice')
 export class Person {
     constructor(
         public name: string,
         public age: number,
     ) { }
-}
-
-function decorator<T extends new (...args: any[]) => any>(target: T): T {
-    return class extends target {
-        name: string;
-        age: number;
-
-        constructor(...args: any[]) {
-            super(...args);
-            this.name = this.superName(args[0]);
-            this.age = args[1];
-        }
-
-        superName(value: string): string {
-            return value.toUpperCase();
-        }
-    };
 }
 
 const person = new Person('Cristovao', 26);
