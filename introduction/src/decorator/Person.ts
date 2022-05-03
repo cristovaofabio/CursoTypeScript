@@ -5,13 +5,36 @@ function decorator(
 ): PropertyDescriptor {
     return {
         value: function (...args: string[]) {
-            console.log('ClassProtorype', classPrototype.name);
             return args[0].toUpperCase();
         }
     }
 }
 
+function paramDecorator(classPrototype: any, name: string | symbol): any {
+    let valuePropriety: any;
+
+    function isString(value: any) {
+        return typeof value === 'string';
+    }
+
+    return {
+        get: () => {
+            if (isString(valuePropriety)) return valuePropriety.toUpperCase();
+            return valuePropriety;
+
+        },
+        set: (value: any) => {
+            if (isString(value)) {
+                valuePropriety = value.split('').reverse().join('');
+            } else {
+                valuePropriety = value;
+            }
+        }
+    }
+}
+
 export class Person {
+    @paramDecorator
     name: string;
     last_name: string;
     age: number;
@@ -34,3 +57,4 @@ export class Person {
 
 const person = new Person('Cristovao', 'Silva', 26);
 console.log(person.message('Welcome!'));
+console.log(person.name);
